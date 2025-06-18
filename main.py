@@ -1,8 +1,13 @@
 # Główna aplikacja GUI
 import tkinter as tk
 from tkinter import simpledialog
+from utils.controller import get_grouped_map
+import webbrowser
 
 def gui_main():
+    def open_map(file_name="mapa.html"):
+        webbrowser.open(file_name)
+
     def make_menu(title, dataset, type_):
         window = tk.Toplevel()
         window.title(title)
@@ -35,11 +40,16 @@ def gui_main():
                     break
             view()
 
+        def show_map():
+            get_grouped_map(dataset, f"{type_}_map.html")
+            open_map(f"{type_}_map.html")
+
+
         tk.Button(window, text="Wyświetl", command=view).pack()
         tk.Button(window, text="Dodaj", command=add).pack()
         tk.Button(window, text="Usuń", command=remove).pack()
         tk.Button(window, text="Aktualizuj", command=update).pack()
-
+        tk.Button(window, text="Mapa", command=show_map).pack()
         text = tk.Text(window, height=15, width=50)
         text.pack()
 
