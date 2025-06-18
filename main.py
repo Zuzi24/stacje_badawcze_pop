@@ -1,7 +1,9 @@
 # Główna aplikacja GUI
 import tkinter as tk
-from tkinter import simpledialog
+from tkinter import simpledialog , messagebox
 from utils.controller import get_grouped_map
+from utils.model import clients, employees
+
 import webbrowser
 
 def gui_main():
@@ -52,6 +54,24 @@ def gui_main():
         tk.Button(window, text="Mapa", command=show_map).pack()
         text = tk.Text(window, height=15, width=50)
         text.pack()
+
+    def map_clients_of_station():
+        name = simpledialog.askstring("Stacja", "Podaj lokalizacje stacji:")
+        filtered = [c for c in clients if c['location'] == name]
+        if not filtered:
+            messagebox.showinfo("Brak danych", "Brak klientów dla tej stacji.")
+            return
+        get_grouped_map(filtered, "clients_of_station.html")
+        open_map("clients_of_station.html")
+
+        def map_employees_of_station():
+            name = simpledialog.askstring("Stacja", "Podaj lokalizacje stacji:")
+            filtered = [e for e in employees if e['location'] == name]
+            if not filtered:
+                messagebox.showinfo("Brak danych", "Brak pracowników dla tej stacji.")
+                return
+            get_grouped_map(filtered, "employees_of_station.html")
+            open_map("employees_of_station.html")
 
     root = tk.Tk()
     root.title("System zarządzania siecią badawczą")
