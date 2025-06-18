@@ -1,7 +1,48 @@
 # Główna aplikacja GUI
 import tkinter as tk
+from tkinter import simpledialog
 
 def gui_main():
+    def make_menu(title, dataset, type_):
+        window = tk.Toplevel()
+        window.title(title)
+
+        def view():
+            text.delete("1.0", tk.END)
+            for item in dataset:
+                text.insert(tk.END, f"{item['name']} - {item['location']}\n")
+
+        def add():
+            name = simpledialog.askstring("Dodaj", "Podaj nazwę:")
+            location = simpledialog.askstring("Dodaj", "Podaj lokalizację:")
+            dataset.append({"name": name, "location": location})
+            view()
+
+        def remove():
+            name = simpledialog.askstring("Usuń", "Podaj nazwę:")
+            for i in dataset:
+                if i["name"] == name:
+                    dataset.remove(i)
+                    break
+            view()
+
+        def update():
+            name = simpledialog.askstring("Aktualizuj", "Podaj nazwę:")
+            for i in dataset:
+                if i["name"] == name:
+                    i["name"] = simpledialog.askstring("Nowa nazwa", "Nowa nazwa:")
+                    i["location"] = simpledialog.askstring("Nowa lokalizacja", "Nowa lokalizacja:")
+                    break
+            view()
+
+        tk.Button(window, text="Wyświetl", command=view).pack()
+        tk.Button(window, text="Dodaj", command=add).pack()
+        tk.Button(window, text="Usuń", command=remove).pack()
+        tk.Button(window, text="Aktualizuj", command=update).pack()
+
+        text = tk.Text(window, height=15, width=50)
+        text.pack()
+
     root = tk.Tk()
     root.title("System zarządzania siecią badawczą")
 
