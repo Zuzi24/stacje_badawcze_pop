@@ -5,56 +5,67 @@ from utils.controller import get_grouped_map
 from utils.model import clients, employees , stations
 import webbrowser
 
+
 def gui_main():
     def open_map(file_name="mapa.html"):
         webbrowser.open(file_name)
 
     def make_menu(title, dataset, type_):
-        window = tk.Toplevel()
+        window = tk.Toplevel(root)
         window.title(title)
 
-        def view():
-            text.delete("1.0", tk.END)
+        selected_index = tk.IntVar()
+
+        def refresh_list():
+            listbox.delete(0, tk.END)
             for item in dataset:
-                text.insert(tk.END, f"{item['name']}           {item['location']}\n")
+                listbox.insert(tk.END, f"{item['name']} - {item['location']}")
 
         def add():
             name = simpledialog.askstring("Dodaj", "Podaj nazwę:")
             location = simpledialog.askstring("Dodaj", "Podaj lokalizację:")
-            dataset.append({"name": name, "location": location})
-            view()
+            if name and location:
+                dataset.append({"name": name, "location": location})
+                refresh_list()
 
         def remove():
-            name = simpledialog.askstring("Usuń", "Podaj nazwę:")
-            for i in dataset:
-                if i["name"] == name:
-                    dataset.remove(i)
-                    break
-            view()
+            idx = listbox.curselection()
+            if not idx:
+                messagebox.showwarning("Uwaga", "Nie zaznaczono elementu do usunięcia.")
+                return
+            dataset.pop(idx[0])
+            refresh_list()
 
         def update():
-            name = simpledialog.askstring("Aktualizuj", "Podaj nazwę:")
-            for i in dataset:
-                if i["name"] == name:
-                    i["name"] = simpledialog.askstring("Nowa nazwa", "Nowa nazwa:")
-                    i["location"] = simpledialog.askstring("Nowa lokalizacja", "Nowa lokalizacja:")
-                    break
-            view()
+            idx = listbox.curselection()
+            if not idx:
+                messagebox.showwarning("Uwaga", "Nie zaznaczono elementu do edycji.")
+                return
+            current = dataset[idx[0]]
+            new_name = simpledialog.askstring("Nowa nazwa", "Nowa nazwa:", initialvalue=current["name"])
+            new_location = simpledialog.askstring("Nowa lokalizacja", "Nowa lokalizacja:",
+                                                  initialvalue=current["location"])
+            if new_name and new_location:
+                dataset[idx[0]] = {"name": new_name, "location": new_location}
+                refresh_list()
 
         def show_map():
             get_grouped_map(dataset, f"{type_}_map.html")
-            open_map(f"{type_}_map.html")
+            webbrowser.open(f"{type_}_map.html")
 
+        # UI
         btn_frame = tk.Frame(window)
-        btn_frame.pack()
-        tk.Button(btn_frame, text="Wyświetl", command=view).grid(row=0, column=0)
-        tk.Button(btn_frame, text="Dodaj", command=add).grid(row=0, column=1)
-        tk.Button(btn_frame, text="Usuń", command=remove).grid(row=0, column=2)
-        tk.Button(btn_frame, text="Aktualizuj", command=update).grid(row=0, column=3)
-        tk.Button(btn_frame, text="Mapa", command=show_map).grid(row=0, column=4)
+        btn_frame.pack(pady=5)
 
-        text = tk.Text(window, height=15, width=80)
-        text.pack()
+        tk.Button(btn_frame, text="Dodaj", command=add, width=12).grid(row=0, column=0, padx=5)
+        tk.Button(btn_frame, text="Usuń", command=remove, width=12).grid(row=0, column=1, padx=5)
+        tk.Button(btn_frame, text="Aktualizuj", command=update, width=12).grid(row=0, column=2, padx=5)
+        tk.Button(btn_frame, text="Mapa", command=show_map, width=12).grid(row=0, column=3, padx=5)
+
+        listbox = tk.Listbox(window, width=60, height=15)
+        listbox.pack(padx=10, pady=10)
+
+        refresh_list()
 
     def map_clients_of_station():
         name = simpledialog.askstring("Stacja", "Podaj lokalizacje stacji:")
