@@ -29,7 +29,7 @@ def get_grouped_map(data: list, filename="mapa.html") -> None:
     for location, names in grouped.items():
         coord = get_coordinates(location)
 
-        #  WAŻNA LOKALIZACJA – TU DODAJ IMIONA DO POPUPA
+        #  WAŻNA LOKALIZACJA – TU DODAJ IMIONA I LOKALIZACJE DO POPUPA
         popup_text = f"<b>{location}</b><br>" + "<br>".join(["• " + name for name in names]) #  lista klientów
         tooltip_text = ", ".join(names)  # na podgląd
 
