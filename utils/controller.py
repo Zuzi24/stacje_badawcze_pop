@@ -1,0 +1,1 @@
+# Logika pobierania danych i tworzenia map

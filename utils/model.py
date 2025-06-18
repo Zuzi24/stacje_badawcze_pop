@@ -1,0 +1,1 @@
+# Przechowywane dane: stacje, klienci, pracownicy
