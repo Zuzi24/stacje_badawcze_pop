@@ -2,8 +2,7 @@
 import tkinter as tk
 from tkinter import simpledialog , messagebox
 from utils.controller import get_grouped_map
-from utils.model import clients, employees
-
+from utils.model import clients, employees , stations
 import webbrowser
 
 def gui_main():
@@ -46,13 +45,15 @@ def gui_main():
             get_grouped_map(dataset, f"{type_}_map.html")
             open_map(f"{type_}_map.html")
 
+        btn_frame = tk.Frame(window)
+        btn_frame.pack()
+        tk.Button(btn_frame, text="Wyświetl", command=view).grid(row=0, column=0)
+        tk.Button(btn_frame, text="Dodaj", command=add).grid(row=0, column=1)
+        tk.Button(btn_frame, text="Usuń", command=remove).grid(row=0, column=2)
+        tk.Button(btn_frame, text="Aktualizuj", command=update).grid(row=0, column=3)
+        tk.Button(btn_frame, text="Mapa", command=show_map).grid(row=0, column=4)
 
-        tk.Button(window, text="Wyświetl", command=view).pack()
-        tk.Button(window, text="Dodaj", command=add).pack()
-        tk.Button(window, text="Usuń", command=remove).pack()
-        tk.Button(window, text="Aktualizuj", command=update).pack()
-        tk.Button(window, text="Mapa", command=show_map).pack()
-        text = tk.Text(window, height=15, width=50)
+        text = tk.Text(window, height=15, width=80)
         text.pack()
 
     def map_clients_of_station():
@@ -64,7 +65,7 @@ def gui_main():
         get_grouped_map(filtered, "clients_of_station.html")
         open_map("clients_of_station.html")
 
-        def map_employees_of_station():
+    def map_employees_of_station():
             name = simpledialog.askstring("Stacja", "Podaj lokalizacje stacji:")
             filtered = [e for e in employees if e['location'] == name]
             if not filtered:
@@ -76,9 +77,12 @@ def gui_main():
     root = tk.Tk()
     root.title("System zarządzania siecią badawczą")
 
-    tk.Button(root, text="Stacje badawcze").pack(pady=5)
-    tk.Button(root, text="Pracownicy").pack(pady=5)
-    tk.Button(root, text="Klienci").pack(pady=5)
+    tk.Button(root, text="Stacje badawcze", command=lambda: make_menu("Stacje", stations, "stations")).pack(pady=5)
+    tk.Button(root, text="Pracownicy", command=lambda: make_menu("Pracownicy", employees, "employees")).pack(pady=5)
+    tk.Button(root, text="Klienci", command=lambda: make_menu("Klienci", clients, "clients")).pack(pady=5)
+
+    tk.Button(root, text="Mapa klientów wybranej stacji", command=map_clients_of_station).pack(pady=5)
+    tk.Button(root, text="Mapa pracowników wybranej stacji", command=map_employees_of_station).pack(pady=5)
 
     tk.Button(root, text="Zamknij", command=root.destroy).pack(pady=20)
     root.mainloop()
