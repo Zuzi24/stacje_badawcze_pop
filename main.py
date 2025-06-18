@@ -16,7 +16,7 @@ def gui_main():
         def view():
             text.delete("1.0", tk.END)
             for item in dataset:
-                text.insert(tk.END, f"{item['name']} - {item['location']}\n")
+                text.insert(tk.END, f"{item['name']}           {item['location']}\n")
 
         def add():
             name = simpledialog.askstring("Dodaj", "Podaj nazwę:")
@@ -77,12 +77,12 @@ def gui_main():
     root = tk.Tk()
     root.title("System zarządzania siecią badawczą")
 
-    tk.Button(root, text="Stacje badawcze", command=lambda: make_menu("Stacje", stations, "stations")).pack(pady=5)
-    tk.Button(root, text="Pracownicy", command=lambda: make_menu("Pracownicy", employees, "employees")).pack(pady=5)
-    tk.Button(root, text="Klienci", command=lambda: make_menu("Klienci", clients, "clients")).pack(pady=5)
+    tk.Button(root, text="Stacje badawcze", command=lambda: make_menu("Stacje", stations, "stations")).pack(pady=10)
+    tk.Button(root, text="Pracownicy", command=lambda: make_menu("Pracownicy", employees, "employees")).pack(pady=10)
+    tk.Button(root, text="Klienci", command=lambda: make_menu("Klienci", clients, "clients")).pack(pady=10)
 
-    tk.Button(root, text="Mapa klientów wybranej stacji", command=map_clients_of_station).pack(pady=5)
-    tk.Button(root, text="Mapa pracowników wybranej stacji", command=map_employees_of_station).pack(pady=5)
+    tk.Button(root, text="Mapa klientów wybranej stacji", command=map_clients_of_station).pack(pady=10)
+    tk.Button(root, text="Mapa pracowników wybranej stacji", command=map_employees_of_station).pack(pady=10)
 
     tk.Button(root, text="Zamknij", command=root.destroy).pack(pady=20)
     root.mainloop()

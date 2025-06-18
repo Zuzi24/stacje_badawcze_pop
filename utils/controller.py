@@ -30,7 +30,7 @@ def get_grouped_map(data: list, filename="mapa.html") -> None:
         coord = get_coordinates(location)
 
         #  WAŻNA LOKALIZACJA – TU DODAJ IMIONA DO POPUPA
-        popup_text = "<br>".join(["• " + name for name in names])  #  lista klientów
+        popup_text = f"<b>{location}</b><br>" + "<br>".join(["• " + name for name in names]) #  lista klientów
         tooltip_text = ", ".join(names)  # na podgląd
 
         folium.Marker(
