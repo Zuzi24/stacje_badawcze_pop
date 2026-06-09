@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_c40dcf27a49f432312de485445109390 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_c40dcf27a49f432312de485445109390" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_c40dcf27a49f432312de485445109390 = L.map(
+                "map_c40dcf27a49f432312de485445109390",
+                {
+                    center: [52.21, 21.0],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 6,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_d36bbe16580b3fe037d37adc13d1d254 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_d36bbe16580b3fe037d37adc13d1d254.addTo(map_c40dcf27a49f432312de485445109390);
+        
+    
+            var marker_d697d118b38f0f2201d0474ae518f244 = L.marker(
+                [52.232222, 21.008333],
+                {
+}
+            ).addTo(map_c40dcf27a49f432312de485445109390);
+        
+    
+        var popup_e2f328d7aa2cb6b0f2a419c06f6f703a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_517a173d2facf55b9c5e5ba8734b7c89 = $(`<div id="html_517a173d2facf55b9c5e5ba8734b7c89" style="width: 100.0%; height: 100.0%;"><b>Warszawa</b><br>• Anna</div>`)[0];
+                popup_e2f328d7aa2cb6b0f2a419c06f6f703a.setContent(html_517a173d2facf55b9c5e5ba8734b7c89);
+            
+        
+
+        marker_d697d118b38f0f2201d0474ae518f244.bindPopup(popup_e2f328d7aa2cb6b0f2a419c06f6f703a)
+        ;
+
+        
+    
+    
+            marker_d697d118b38f0f2201d0474ae518f244.bindTooltip(
+                `<div>
+                     Anna
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_ca0562d227dc54a3adca85c280f1e1c9 = L.marker(
+                [50.061389, 19.938333],
+                {
+}
+            ).addTo(map_c40dcf27a49f432312de485445109390);
+        
+    
+        var popup_3bdc93abbda339e836879668cde9536d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8e4cf16f114495b8101bf8a6b60df26b = $(`<div id="html_8e4cf16f114495b8101bf8a6b60df26b" style="width: 100.0%; height: 100.0%;"><b>Kraków</b><br>• Tomasz</div>`)[0];
+                popup_3bdc93abbda339e836879668cde9536d.setContent(html_8e4cf16f114495b8101bf8a6b60df26b);
+            
+        
+
+        marker_ca0562d227dc54a3adca85c280f1e1c9.bindPopup(popup_3bdc93abbda339e836879668cde9536d)
+        ;
+
+        
+    
+    
+            marker_ca0562d227dc54a3adca85c280f1e1c9.bindTooltip(
+                `<div>
+                     Tomasz
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+</script>
+</html>

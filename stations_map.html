@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_59a56ea2050c6f01d114ac7672044e7d {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_59a56ea2050c6f01d114ac7672044e7d" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_59a56ea2050c6f01d114ac7672044e7d = L.map(
+                "map_59a56ea2050c6f01d114ac7672044e7d",
+                {
+                    center: [52.21, 21.0],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 6,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_e5e379547feecf991be760222cc9b48b = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_e5e379547feecf991be760222cc9b48b.addTo(map_59a56ea2050c6f01d114ac7672044e7d);
+        
+    
+            var marker_23d4015b7be28a5678b2b2b7637b9221 = L.marker(
+                [52.232222, 21.008333],
+                {
+}
+            ).addTo(map_59a56ea2050c6f01d114ac7672044e7d);
+        
+    
+        var popup_07f8d0ea6808e64bc1a822102815322a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9a9fc98e4eb3411ce54db7e8f8ce8cd6 = $(`<div id="html_9a9fc98e4eb3411ce54db7e8f8ce8cd6" style="width: 100.0%; height: 100.0%;"><b>Warszawa</b><br>• Stacja A</div>`)[0];
+                popup_07f8d0ea6808e64bc1a822102815322a.setContent(html_9a9fc98e4eb3411ce54db7e8f8ce8cd6);
+            
+        
+
+        marker_23d4015b7be28a5678b2b2b7637b9221.bindPopup(popup_07f8d0ea6808e64bc1a822102815322a)
+        ;
+
+        
+    
+    
+            marker_23d4015b7be28a5678b2b2b7637b9221.bindTooltip(
+                `<div>
+                     Stacja A
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_f48d3257ad3bec7c712e91d48e4ad764 = L.marker(
+                [51.403611, 21.156667],
+                {
+}
+            ).addTo(map_59a56ea2050c6f01d114ac7672044e7d);
+        
+    
+        var popup_edd6686b06085b2dad2f9fd5cb7a26eb = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2f33103e16ff2e8530852143e7966660 = $(`<div id="html_2f33103e16ff2e8530852143e7966660" style="width: 100.0%; height: 100.0%;"><b>Radom</b><br>• satach</div>`)[0];
+                popup_edd6686b06085b2dad2f9fd5cb7a26eb.setContent(html_2f33103e16ff2e8530852143e7966660);
+            
+        
+
+        marker_f48d3257ad3bec7c712e91d48e4ad764.bindPopup(popup_edd6686b06085b2dad2f9fd5cb7a26eb)
+        ;
+
+        
+    
+    
+            marker_f48d3257ad3bec7c712e91d48e4ad764.bindTooltip(
+                `<div>
+                     satach
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+</script>
+</html>
